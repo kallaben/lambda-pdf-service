@@ -6,8 +6,9 @@ async function lambdaHandler(event, context) {
         headless: true,
         dumpio: true, // pass chrome logs to output, helps a lot if launch fails
         args: [
-            '...some args passed to chrome'
-        ],
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+        ]
     });
     const page = await browser.newPage();
     let extractedText = '';
