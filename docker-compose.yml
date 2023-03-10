@@ -5,7 +5,9 @@ services:
       - "9000:8080"
     volumes:
       - ./rie:/aws-lambda
+      - ./output:/code-and-deps/output
     entrypoint: /aws-lambda/aws-lambda-rie
     command: /usr/local/bin/npx aws-lambda-ric app.handler
 volumes:
   rie:
+  output:

@@ -2,7 +2,7 @@ FROM node:14-buster
 
 # Install Chromium
 RUN apt-get update \
-    && apt-get install -y chromium fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 \
+    && apt-get install -y chromium fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-khmeros fonts-kacst fonts-freefont-ttf libxss1 \
       --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
@@ -26,7 +26,7 @@ RUN npm install aws-lambda-ric puppeteer@8.0.0 \
     && chown -R pptruser:pptruser /home/pptruser \
     && chown -R pptruser:pptruser /code-and-deps
 
-COPY src/app.js /code-and-deps/app.js
+COPY src /code-and-deps
 USER pptruser
 ENTRYPOINT ["/usr/local/bin/npx", "aws-lambda-ric"]
 CMD ["app.handler"]
