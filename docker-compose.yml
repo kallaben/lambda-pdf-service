@@ -1,0 +1,11 @@
+services:
+  generator:
+    build: .
+    ports:
+      - "9000:8080"
+    volumes:
+      - ./rie:/aws-lambda
+    entrypoint: /aws-lambda/aws-lambda-rie
+    command: /usr/local/bin/npx aws-lambda-ric app.handler
+volumes:
+  rie:
