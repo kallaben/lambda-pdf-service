@@ -1,0 +1,18 @@
+# This is the serverless.yml file for deploying an AWS Lambda function
+# and API Gateway that can generate PDFs from Pug templates
+
+service: pdf-generator
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-west-1
+
+# This is the AWS Lambda function that will be deployed
+functions:
+  generatePdf:
+    handler: index.handler
+    events:
+      - http:
+          path: /pdf
+          method: post
